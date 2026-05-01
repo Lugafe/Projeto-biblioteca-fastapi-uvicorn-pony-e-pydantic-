@@ -1,0 +1,27 @@
+
+
+services:
+
+  api-dev:
+    build: .
+    container_name: biblioteca-dev
+    ports:
+      - "8001:8000"
+    environment:
+      - ENV=dev
+
+  api-test:
+    build: .
+    container_name: biblioteca-test
+    ports:
+      - "8002:8000"
+    environment:
+      - ENV=test
+
+  api-prod:
+    build: .
+    container_name: biblioteca-prod
+    ports:
+      - "8003:8000"
+    environment:
+      - ENV=prod
