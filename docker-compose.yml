@@ -25,3 +25,17 @@ services:
       - "8003:8000"
     environment:
       - ENV=prod
+
+  frontend:
+    build: ./frontend
+    container_name: biblioteca-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+    - ./frontend:/app
+    stdin_open: true
+    tty: true
+    depends_on:
+      - api-dev
+      - api-test
+      - api-prod
