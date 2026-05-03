@@ -1,3 +1,4 @@
+import { TextField, Button, Box } from "@mui/material";
 import { useState } from "react";
 
 export default function LivroForm({ onCreate }) {
@@ -10,13 +11,17 @@ export default function LivroForm({ onCreate }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-      <input
+    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+      <TextField
+        label="Nome do Livro"
         value={titulo}
         onChange={(e) => setTitulo(e.target.value)}
-        placeholder="Nome do livro"
+        fullWidth
+        sx={{ mb: 2 }}
       />
-      <button type="submit">Criar</button>
-    </form>
+      <Button variant="contained" type="submit">
+        Criar
+      </Button>
+    </Box>
   );
 }

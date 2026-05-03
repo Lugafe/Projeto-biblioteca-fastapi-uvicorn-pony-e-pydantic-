@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Select, MenuItem, Button, Box } from "@mui/material";
 
 export default function EmprestimoForm({ usuarios, livros, onEmprestar }) {
   const [usuario, setUsuario] = useState("");
@@ -10,22 +11,38 @@ export default function EmprestimoForm({ usuarios, livros, onEmprestar }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <select onChange={(e) => setUsuario(e.target.value)}>
-        <option>Usuário</option>
-        {usuarios.map(u => (
-          <option key={u.id} value={u.id}>{u.nome}</option>
+    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+      <Select
+        fullWidth
+        value={usuario}
+        onChange={(e) => setUsuario(e.target.value)}
+        sx={{ mb: 2 }}
+      >
+        <MenuItem value="">Selecione um usuário</MenuItem>
+        {usuarios.map((u) => (
+          <MenuItem key={u.id} value={u.id}>
+            {u.nome}
+          </MenuItem>
         ))}
-      </select>
+      </Select>
 
-      <select onChange={(e) => setLivro(e.target.value)}>
-        <option>Livro</option>
-        {livros.map(l => (
-          <option key={l.id} value={l.id}>{l.titulo}</option>
+      <Select
+        fullWidth
+        value={livro}
+        onChange={(e) => setLivro(e.target.value)}
+        sx={{ mb: 2 }}
+      >
+        <MenuItem value="">Selecione um livro</MenuItem>
+        {livros.map((l) => (
+          <MenuItem key={l.id} value={l.id}>
+            {l.titulo}
+          </MenuItem>
         ))}
-      </select>
+      </Select>
 
-      <button type="submit">Emprestar</button>
-    </form>
+      <Button variant="contained" type="submit">
+        Emprestar
+      </Button>
+    </Box>
   );
 }

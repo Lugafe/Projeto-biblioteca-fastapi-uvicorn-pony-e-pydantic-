@@ -1,3 +1,4 @@
+import { TextField, Button, Box } from "@mui/material";
 import { useState } from "react";
 
 export default function UsuarioForm({ onCreate }) {
@@ -10,13 +11,17 @@ export default function UsuarioForm({ onCreate }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+      <TextField
+        label="Nome do Usuário"
         value={nome}
         onChange={(e) => setNome(e.target.value)}
-        placeholder="Nome do usuário"
+        fullWidth
+        sx={{ mb: 2 }}
       />
-      <button type="submit">Criar Usuário</button>
-    </form>
+      <Button variant="contained" type="submit">
+        Criar
+      </Button>
+    </Box>
   );
 }
